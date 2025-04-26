@@ -1,0 +1,93 @@
+using Microsoft.VisualBasic;
+using System.Xml.Linq;
+
+namespace Av02Parte4
+{
+    public partial class Form1 : Form
+    {
+        private TcpClientApp _client;
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        public void AddMessage(string mensagem)
+        {
+            if (InvokeRequired)
+            {
+                Invoke(new Action<string>(AddMessage), mensagem);
+                return;
+            }
+
+            textBoxMessageReceived.AppendText(mensagem + Environment.NewLine);
+        }
+
+        public void ReloadUsers(string[] connectedUsers)
+        {
+            if (InvokeRequired)
+            {
+                Invoke(new Action<string[]>(ReloadUsers), new object[] { connectedUsers });
+                return;
+            }
+
+            listBoxConnectedUsers.Items.Clear();
+            listBoxConnectedUsers.Items.AddRange(connectedUsers);
+        }
+
+        private async void buttonSend_Click(object sender, EventArgs e)
+        {
+            string message = textBoxSendMessage.Text.Trim();
+            if (!string.IsNullOrEmpty(message))
+            {
+                if(listBoxConnectedUsers.SelectedItems.Count > 0)
+                {
+                    var command = "/whisper ";
+                    foreach (var item in listBoxConnectedUsers.SelectedItems)
+                    {
+                        command = command+item.ToString()+',';
+                    }
+                    message = $"{command} {message}";
+                }
+
+                await _client.SendMessageAsync(message);
+                textBoxSendMessage.Clear();
+                textBoxSendMessage.Focus();
+            }
+        }
+
+        private async void buttonConnect_Click(object sender, EventArgs e)
+        {
+            string name = null;
+            using (var modal = new UserName())
+            {
+                if (modal.ShowDialog(this) == DialogResult.OK)
+                {
+                    name = modal.Username;
+                }
+            }
+
+            if (!string.IsNullOrWhiteSpace(name))
+            {
+                _client = new TcpClientApp("127.0.0.1", 8080, this);
+                await _client.StartAsync();
+
+                await _client.SendMessageAsync("/setname " + name);
+                buttonSend.Enabled = true;
+                buttonConnect.Enabled = false;
+            }
+        }
+
+        private async void buttonExit_Click(object sender, EventArgs e)
+        {
+            await _client.SendMessageAsync("/disconnect");
+            buttonSend.Enabled = false;
+            buttonConnect.Enabled = true;
+            listBoxConnectedUsers.Items.Clear();
+        }
+    }
+}

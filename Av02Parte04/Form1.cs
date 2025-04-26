@@ -1,0 +1,10 @@
+namespace Av02Parte04
+{
+    public partial class MainForm : Form
+    {
+        public MainForm()
+        {
+            InitializeComponent();
+        }
+    }
+}
