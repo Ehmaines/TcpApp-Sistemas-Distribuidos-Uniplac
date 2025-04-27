@@ -212,11 +212,11 @@ namespace Av02Parte4_Server
                 var name = _clients.FirstOrDefault(c => c.client == client)?.Name;
                 foreach (var c in _clients)
                 {
-                    if (c.client != client)
-                    {
+                    //if (c.client != client)
+                    //{
                         byte[] response = Encoding.UTF8.GetBytes($"{name}: {message}");
                         await c.client.GetStream().WriteAsync(response, 0, response.Length);
-                    }
+                    //}
                 }
             }
         }

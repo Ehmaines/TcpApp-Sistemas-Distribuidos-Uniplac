@@ -118,8 +118,8 @@ namespace Av02Parte4
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.InitialDirectory = "C:\\";
-                openFileDialog.Filter = "All files (*.*)|*.*"; 
-                openFileDialog.FilterIndex = 1; 
+                openFileDialog.Filter = "All files (*.*)|*.*";
+                openFileDialog.FilterIndex = 1;
                 openFileDialog.RestoreDirectory = true;
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -137,6 +137,14 @@ namespace Av02Parte4
                     }
                     await _client.SendFileAsync(filePath);
                 }
+            }
+        }
+        private void textBoxSendMessage_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                buttonSend.PerformClick();
             }
         }
     }

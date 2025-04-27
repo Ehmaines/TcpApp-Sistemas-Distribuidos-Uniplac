@@ -105,6 +105,7 @@
             textBoxSendMessage.Name = "textBoxSendMessage";
             textBoxSendMessage.Size = new Size(1122, 23);
             textBoxSendMessage.TabIndex = 0;
+            textBoxSendMessage.KeyDown += textBoxSendMessage_KeyDown;
             // 
             // buttonSend
             // 
