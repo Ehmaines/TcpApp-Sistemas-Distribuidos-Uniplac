@@ -150,6 +150,7 @@
             buttonFile.TabIndex = 2;
             buttonFile.Text = "Arquivo";
             buttonFile.UseVisualStyleBackColor = true;
+            buttonFile.Click += buttonFile_Click;
             // 
             // buttonConnect
             // 
