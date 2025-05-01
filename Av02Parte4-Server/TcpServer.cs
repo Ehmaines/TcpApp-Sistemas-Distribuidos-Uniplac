@@ -55,18 +55,23 @@ namespace Av02Parte4_Server
                         string message = Encoding.UTF8.GetString(buffer, 0, bytesRead);
                         Console.WriteLine($"Message Received: {message}");
 
-                        if (message.StartsWith("/sendfile "))
+                        if (message.StartsWith("/sendfile:"))
                         {
-                            var parts = message.Split(' ', 3);
+                            var parts = message.Split(':', 3); //Coloquei : aqui pois : não pode ser usado em nome de arquivo, ai fica mais facil fazer o split
                             if (parts.Length >= 3)
                             {
+                                Console.WriteLine($"Começou o parts.Length");
                                 fileName = parts[1];
+                                Console.WriteLine($"Antes int.Parse(parts[2]);");
                                 remainingFileBytes = int.Parse(parts[2]);
+                                Console.WriteLine($"Antes isWaitingFile = true;");
                                 isWaitingFile = true;
+                                Console.WriteLine($"antes do fileBuffer = new List<byte>();");
                                 fileBuffer = new List<byte>();
 
                                 Console.WriteLine($"Preparing to receive file {fileName} ({remainingFileBytes} bytes)");
                             }
+                            Console.WriteLine($"Caiu fora do IF do /sendfile partes menores que 3");
                         }
                         else if(message.StartsWith("/sendfilewhisper "))
                         {
@@ -90,12 +95,14 @@ namespace Av02Parte4_Server
                     }
                     else
                     {
+                        Console.WriteLine($"Antes do fileBuffer.AddRange(buffer.Take(bytesRead));");
                         // Receiving file bytes
                         fileBuffer.AddRange(buffer.Take(bytesRead));
                         remainingFileBytes -= bytesRead;
-
+                        Console.WriteLine($"Depois do remainingFileBytes -= bytesRead;");
                         if (remainingFileBytes <= 0)
                         {
+                            Console.WriteLine($"Antes do await ProcessFileAsync(client, fileName, fileBuffer, recipientFileNames);");
                             await ProcessFileAsync(client, fileName, fileBuffer, recipientFileNames);
 
                             // Reset state
@@ -131,7 +138,7 @@ namespace Av02Parte4_Server
                     NetworkStream clientStream = client.client.GetStream();
 
                     // First, send a message to inform about incoming file
-                    string notification = $"[FILESEND] {fileName} {fileContent.Count}";
+                    string notification = $"[FILESEND]:{fileName}:{fileContent.Count}";
                     byte[] notificationBytes = Encoding.UTF8.GetBytes(notification);
                     await clientStream.WriteAsync(notificationBytes, 0, notificationBytes.Length);
 

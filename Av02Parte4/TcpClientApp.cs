@@ -66,7 +66,7 @@ namespace Av02Parte4
                         if (message.StartsWith("[FILESEND]"))
                         {
                             // Arquivo chegando
-                            var parts = message.Split(' ', 3);
+                            var parts = message.Split(':', 3);
                             if (parts.Length >= 3)
                             {
                                 fileName = parts[1];
@@ -147,7 +147,7 @@ namespace Av02Parte4
             string fileName = fileInfo.Name;
             long fileSize = fileInfo.Length;
 
-            string command = $"/sendfile {fileName} {fileSize}";
+            string command = $"/sendfile:{fileName}:{fileSize}";//Coloquei : aqui pois não pode ser usado no nome de arquivo, ai fica mais facil fazer o split no server
             byte[] commandBytes = Encoding.UTF8.GetBytes(command);
             await stream.WriteAsync(commandBytes, 0, commandBytes.Length);
 
