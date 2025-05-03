@@ -145,6 +145,7 @@
             // buttonFile
             // 
             buttonFile.Cursor = Cursors.Hand;
+            buttonFile.Enabled = false;
             buttonFile.Location = new Point(105, 20);
             buttonFile.Name = "buttonFile";
             buttonFile.Size = new Size(93, 29);

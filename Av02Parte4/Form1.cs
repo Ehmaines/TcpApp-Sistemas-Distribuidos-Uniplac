@@ -102,6 +102,8 @@ namespace Av02Parte4
                 await _client.SendMessageAsync("/setname " + name);
                 buttonSend.Enabled = true;
                 buttonConnect.Enabled = false;
+                buttonFile.Enabled = true;
+                Form1.ActiveForm.Text = "Chat - " + name;
             }
         }
 
