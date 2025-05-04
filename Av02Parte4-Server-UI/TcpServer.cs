@@ -74,9 +74,9 @@ namespace Av02Parte4_Server
                                 await _logger.LogAsync($"Preparing to receive file {fileName} ({remainingFileBytes} bytes)");
                             }
                         }
-                        else if(message.StartsWith("/sendfilewhisper "))
+                        else if(message.StartsWith("/sendfilewhisper:"))
                         {
-                            var parts = message.Split(' ', 4);
+                            var parts = message.Split(':', 4);
                             if (parts.Length >= 4)
                             {
                                 fileName = parts[1];

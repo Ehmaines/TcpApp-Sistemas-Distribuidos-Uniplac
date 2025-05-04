@@ -173,7 +173,7 @@ namespace Av02Parte4
             string fileName = fileInfo.Name;
             long fileSize = fileInfo.Length;
 
-            string command = $"/sendfilewhisper {fileName} {fileSize} {namesToSendFile}";
+            string command = $"/sendfilewhisper:{fileName}:{fileSize}:{namesToSendFile}";
             byte[] commandBytes = Encoding.UTF8.GetBytes(command);
             await stream.WriteAsync(commandBytes, 0, commandBytes.Length);
 
