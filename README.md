@@ -10,7 +10,7 @@ Simular uma aplicação distribuída com múltiplos clientes se conectando a um 
 
 ## 🖥️ Funcionalidades
 
-### Servidor (`Av02Parte4-Server-UI`)
+### Servidor (`TcpChat.Server`)
 - Escuta conexões de múltiplos clientes simultaneamente.
 - Exibe mensagens recebidas em tempo real.
 - Lista usuários conectados.
@@ -18,7 +18,7 @@ Simular uma aplicação distribuída com múltiplos clientes se conectando a um 
 - Envia mensagens privadas para os clientes selecionados
 - Lida com comandos específicos recebidos dos clientes.
 
-### Cliente (`Av02Parte4`)
+### Cliente (`TcpChat.Client`)
 - Interface para digitar o nome do usuário e se conectar ao servidor.
 - Exibe mensagens recebidas do servidor.
 - Envia mensagens ao servidor (privadas ou comandos).
@@ -42,15 +42,15 @@ A comunicação é feita utilizando **System.Net.Sockets**, onde:
 ```plaintext
 TcpApp-Sistemas-Distribuidos-Uniplac/
 │
-├── Av02Parte04.sln                # Solução principal
+├── TcpMessengerApp.sln           # Solução principal
 │
-├── Av02Parte4-Server-UI/         # Projeto do Servidor
-│   ├── Form1.cs                  # Interface principal do servidor
+├── TcpChat.Server/               # Projeto do Servidor
+│   ├── TcpServerForm.cs          # Interface principal do servidor
 │   ├── TcpServer.cs              # Lógica principal de controle do servidor TCP
 │
-├── Av02Parte4/                   # Projeto do Cliente
-│   ├── Form1.cs                  # Interface principal do cliente
-│   ├── TcpClientHandler.cs       # Lógica do cliente para conexão e troca de mensagens
+├── TcpChat.Client/               # Projeto do Cliente
+│   ├── TcpClientForm.cs          # Interface principal do cliente
+│   ├── TcpClientApp.cs           # Lógica do cliente para conexão e troca de mensagens
 ```
 ---
 # Como Executar Localmente
@@ -62,19 +62,20 @@ git clone https://github.com/Ehmaines/TcpApp-Sistemas-Distribuidos-Uniplac.git
 ```
 
 ### Abra a solução no Visual Studio
-- Arquivo: Av02Parte04.sln
+- Arquivo: TcpMessengerApp.sln
 
 ### Execute primeiro o servidor:
 
-- Compile e inicie o projeto Av02Parte4-Server-UI.
+- Compile e inicie o projeto TcpChat.Server.
 
-- Clique em "Start" para escutar conexões na porta especificada.
+- Clique em "Start" para escutar conexões na porta especificada (8080).
 
 ### Execute um ou mais clientes:
 
-- Compile e inicie o projeto Av02Parte4.
+- Compile e inicie o projeto TcpChat.Client
 
 ### Envie mensagens e veja a interação.
+
 ### OBS: Porta de comunicação TCP: 8080
 ---
 ## Considerações Finais
