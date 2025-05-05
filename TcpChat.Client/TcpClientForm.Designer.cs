@@ -1,6 +1,6 @@
 ﻿namespace Av02Parte4
 {
-    partial class Form1
+    partial class TcpClientForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -165,7 +165,7 @@
             buttonConnect.UseVisualStyleBackColor = true;
             buttonConnect.Click += buttonConnect_Click;
             // 
-            // Form1
+            // TcpClientForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -175,7 +175,7 @@
             Controls.Add(groupBoxConnectedUsers);
             Controls.Add(groupBoxMessageReceived);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
-            Name = "Form1";
+            Name = "TcpClientForm";
             Text = "Form1";
             Load += Form1_Load;
             groupBoxMessageReceived.ResumeLayout(false);

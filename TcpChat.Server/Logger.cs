@@ -5,10 +5,10 @@ namespace Av02Parte4_Server
 {
     public class Logger
     {
-        private FormServer _form;
+        private TcpServerForm _form;
         private readonly string LogPath = "log.txt";
 
-        public Logger(FormServer form)
+        public Logger(TcpServerForm form)
         {
             _form = form;
         }

@@ -2,10 +2,10 @@ using Av02Parte4_Server;
 
 namespace Av02Parte4_Server_UI
 {
-    public partial class FormServer : Form
+    public partial class TcpServerForm : Form
     {
         private TcpServer _server;
-        public FormServer()
+        public TcpServerForm()
         {
             InitializeComponent();
         }

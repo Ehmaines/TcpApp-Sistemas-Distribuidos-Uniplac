@@ -14,9 +14,9 @@ namespace Av02Parte4
         private readonly int _port;
         private NetworkStream _stream;
         private TcpClient _client;
-        private readonly Form1 _form;
+        private readonly TcpClientForm _form;
 
-        public TcpClientApp(string ipServer, int port, Form1 form)
+        public TcpClientApp(string ipServer, int port, TcpClientForm form)
         {
             _ipServer = ipServer;
             _port = port;

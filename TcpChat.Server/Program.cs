@@ -1,4 +1,6 @@
-namespace Av02Parte4
+using Av02Parte4_Server;
+
+namespace Av02Parte4_Server_UI
 {
     internal static class Program
     {
@@ -11,7 +13,7 @@ namespace Av02Parte4
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            Application.Run(new TcpServerForm());
         }
     }
 }

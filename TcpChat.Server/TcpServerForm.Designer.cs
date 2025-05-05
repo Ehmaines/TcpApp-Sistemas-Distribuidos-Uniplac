@@ -1,6 +1,6 @@
 ﻿namespace Av02Parte4_Server_UI
 {
-    partial class FormServer
+    partial class TcpServerForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -74,14 +74,14 @@
             listBoxConnectedUser.Size = new Size(189, 409);
             listBoxConnectedUser.TabIndex = 0;
             // 
-            // FormServer
+            // TcpServerForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(817, 457);
             Controls.Add(groupBoxConnectedUsers);
             Controls.Add(groupBoxLogs);
-            Name = "FormServer";
+            Name = "TcpServerForm";
             Text = "Server";
             Load += FormServer_Load;
             groupBoxLogs.ResumeLayout(false);

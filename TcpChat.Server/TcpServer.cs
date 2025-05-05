@@ -16,10 +16,10 @@ namespace Av02Parte4_Server
         private readonly int _port;
         private TcpListener _server;
         private List<Client> _clients = new List<Client>();
-        private readonly FormServer _form;
+        private readonly TcpServerForm _form;
         private readonly Logger _logger;
 
-        public TcpServer(int port, FormServer form)
+        public TcpServer(int port, TcpServerForm form)
         {
             _port = port;
             _server = new TcpListener(IPAddress.Any, _port);

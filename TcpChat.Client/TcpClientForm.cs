@@ -4,10 +4,10 @@ using System.Xml.Linq;
 
 namespace Av02Parte4
 {
-    public partial class Form1 : Form
+    public partial class TcpClientForm : Form
     {
         private TcpClientApp _client;
-        public Form1()
+        public TcpClientForm()
         {
             InitializeComponent();
         }
@@ -103,7 +103,7 @@ namespace Av02Parte4
                 buttonSend.Enabled = true;
                 buttonConnect.Enabled = false;
                 buttonFile.Enabled = true;
-                Form1.ActiveForm.Text = "Chat - " + name;
+                TcpClientForm.ActiveForm.Text = "Chat - " + name;
             }
         }
 
